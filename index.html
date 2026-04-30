@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>DocPlain AI — AI Legal Contract & Document Simplifier for US Businesses</title>
+<meta name="description" content="Generate, review and understand legal contracts and documents in plain English using AI. Free NDA, freelance contracts, LLC agreements and more. Built for US businesses, freelancers and startups."/>
+<meta name="keywords" content="AI legal contracts, legal document generator, contract review AI, free NDA template USA, freelance contract template, LLC operating agreement generator, legal document simplifier, AI contract maker, US legal docs free, small business legal documents"/>
+<meta name="author" content="DocPlain AI"/>
+<meta name="robots" content="index, follow"/>
+<meta name="googlebot" content="index, follow"/>
+<link rel="canonical" href="https://docplainai.vercel.app/"/>
+
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="DocPlain AI — AI Legal Contracts Made Simple"/>
+<meta property="og:description" content="Stop paying thousands in legal fees. Generate any US legal document in minutes using AI. Free to start."/>
+<meta property="og:url" content="https://docplainai.vercel.app/"/>
+<meta property="og:site_name" content="DocPlain AI"/>
+<meta property="og:locale" content="en_US"/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="DocPlain AI — AI Legal Contracts Made Simple"/>
+<meta name="twitter:description" content="Generate, review & understand any US legal document in minutes. Free to start. No lawyer needed."/>
+<meta name="twitter:site" content="@DocPlainAI"/>
+
+<meta name="geo.region" content="US"/>
+<meta name="geo.placename" content="United States"/>
+<meta name="language" content="English"/>
+<meta name="rating" content="general"/>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "DocPlain AI",
+  "url": "https://docplainai.vercel.app",
+  "description": "AI-powered legal contract and document generator for US businesses, freelancers and startups. Generate NDAs, freelance contracts, LLC agreements and more in plain English.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "audience": {
+    "@type": "Audience",
+    "geographicArea": {
+      "@type": "Country",
+      "name": "United States"
+    }
+  }
+}
+</script>
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>"/>
+<meta name="theme-color" content="#0a1628"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#0a1628;--gold:#c9a84c;--gold-light:#f0d080;--cream:#faf8f3;--text:#1a1a2e;--muted:#6b7280;--white:#fff;--border:#e5e0d5;--green:#1a7a4a}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+nav{background:var(--navy);padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
+.logo{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.3rem;font-weight:700}
+.logo span{color:var(--white)}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:0.88rem;transition:color 0.2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold);color:var(--navy);padding:0.5rem 1.2rem;border-radius:6px;font-weight:500;font-size:0.88rem;text-decoration:none}
+@media(max-width:680px){.nav-links{display:none}}
+.hero{background:var(--navy);padding:4rem 1.5rem 3.5rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(201,168,76,0.12) 0%,transparent 70%);pointer-events:none}
+.hero-badge{display:inline-block;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.35);color:var(--gold);font-size:0.72rem;padding:0.35rem 0.9rem;border-radius:20px;margin-bottom:1.3rem;letter-spacing:1px;text-transform:uppercase}
+.hero h1{font-family:'Playfair Display',serif;color:var(--white);font-size:clamp(1.9rem,5vw,3.6rem);line-height:1.15;max-width:700px;margin:0 auto 1.1rem}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero p{color:rgba(255,255,255,0.65);font-size:1rem;max-width:520px;margin:0 auto 2.2rem;line-height:1.7}
+.hero-btns{display:flex;gap:0.8rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:var(--navy);padding:0.8rem 1.8rem;border-radius:8px;font-weight:500;font-size:0.95rem;text-decoration:none;border:none;cursor:pointer;transition:all 0.2s}
+.btn-primary:hover{background:var(--gold-light)}
+.btn-outline{background:transparent;color:var(--white);padding:0.8rem 1.8rem;border-radius:8px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,255,255,0.3);cursor:pointer;transition:all 0.2s}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.hero-stats{display:flex;gap:2rem;justify-content:center;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1);flex-wrap:wrap}
+.stat-num{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.8rem;font-weight:700}
+.stat-label{color:rgba(255,255,255,0.5);font-size:0.78rem;margin-top:2px}
+.trust{background:var(--white);padding:1.2rem 1.5rem;display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;border-bottom:1px solid var(--border)}
+.trust-label{color:var(--muted);font-size:0.78rem;text-transform:uppercase;letter-spacing:1px}
+.trust-logos{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;justify-content:center}
+.trust-logo{color:#9ca3af;font-size:0.82rem;font-weight:500;letter-spacing:0.5px}
+section{padding:4rem 1.5rem}
+.section-label{color:var(--gold);font-size:0.72rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:0.7rem;font-weight:500}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.2;margin-bottom:0.8rem}
+.section-sub{color:var(--muted);font-size:0.95rem;line-height:1.7}
+.center{text-align:center;margin:0 auto}
+.how-it-works{background:var(--white)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin-top:3rem;max-width:900px;margin-left:auto;margin-right:auto}
+.step{text-align:center;padding:1.8rem 1.3rem;border-radius:12px;border:1px solid var(--border);background:var(--cream)}
+.step-num{width:44px;height:44px;border-radius:50%;background:var(--navy);color:var(--gold);font-family:'Playfair Display',serif;font-size:1.2rem;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem}
+.step h3{font-size:0.95rem;font-weight:500;margin-bottom:0.4rem}
+.step p{color:var(--muted);font-size:0.84rem;line-height:1.6}
+.features{background:var(--cream)}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.3rem;max-width:920px;margin:2.5rem auto 0}
+.feature-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.6rem;transition:all 0.2s}
+.feature-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.feature-icon{width:40px;height:40px;background:rgba(201,168,76,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:0.9rem;font-size:1.1rem}
+.feature-card h3{font-size:0.95rem;font-weight:500;margin-bottom:0.4rem}
+.feature-card p{color:var(--muted);font-size:0.84rem;line-height:1.6}
+.doc-types{background:var(--navy);padding:4rem 1.5rem}
+.doc-types .section-title{color:var(--white)}
+.doc-types .section-sub{color:rgba(255,255,255,0.5)}
+.doc-grid{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:2rem;max-width:800px}
+.doc-tag{background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.25);color:var(--gold);padding:0.45rem 1rem;border-radius:20px;font-size:0.82rem}
+.pricing{background:var(--white)}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.3rem;max-width:860px;margin:2.5rem auto 0}
+.plan{border:1px solid var(--border);border-radius:14px;padding:1.8rem;position:relative;background:var(--cream)}
+.plan.featured{background:var(--navy);border-color:var(--gold);color:var(--white)}
+.plan-badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-size:0.7rem;font-weight:500;padding:0.2rem 0.8rem;border-radius:10px;white-space:nowrap;text-transform:uppercase;letter-spacing:1px}
+.plan-name{font-size:0.8rem;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:0.4rem}
+.plan-price{font-family:'Playfair Display',serif;font-size:2.3rem;font-weight:700;line-height:1}
+.plan-price span{font-size:0.9rem;font-family:'DM Sans',sans-serif;font-weight:400;color:var(--muted)}
+.plan.featured .plan-price span{color:rgba(255,255,255,0.5)}
+.plan-desc{font-size:0.82rem;color:var(--muted);margin:0.5rem 0 1.3rem;line-height:1.5}
+.plan.featured .plan-desc{color:rgba(255,255,255,0.55)}
+.plan-features{list-style:none;display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.5rem}
+.plan-features li{font-size:0.84rem;display:flex;align-items:center;gap:0.5rem}
+.plan-features li::before{content:'✓';color:var(--green);font-weight:700}
+.plan.featured .plan-features li{color:rgba(255,255,255,0.85)}
+.plan-btn{display:block;text-align:center;padding:0.7rem;border-radius:8px;font-size:0.88rem;font-weight:500;cursor:pointer;border:none;width:100%;transition:all 0.2s}
+.plan-btn-outline{background:transparent;border:1px solid var(--border);color:var(--text)}
+.plan-btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.plan-btn-gold{background:var(--gold);color:var(--navy)}
+.plan-btn-gold:hover{background:var(--gold-light)}
+.faq{background:var(--cream)}
+.faq-list{max-width:680px;margin:2.5rem auto 0;display:flex;flex-direction:column;gap:0.8rem}
+.faq-item{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.faq-q{padding:1.1rem 1.3rem;font-weight:500;font-size:0.9rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none}
+.faq-q:hover{background:var(--cream)}
+.faq-a{padding:0 1.3rem 1.1rem;color:var(--muted);font-size:0.84rem;line-height:1.7;display:none}
+.faq-item.open .faq-a{display:block}
+.faq-arrow{color:var(--gold);font-size:1rem;transition:transform 0.2s}
+.faq-item.open .faq-arrow{transform:rotate(45deg)}
+.cta-section{background:var(--navy);padding:4rem 1.5rem;text-align:center}
+.cta-section h2{font-family:'Playfair Display',serif;color:var(--white);font-size:clamp(1.6rem,3vw,2.4rem);margin-bottom:0.9rem}
+.cta-section p{color:rgba(255,255,255,0.6);margin-bottom:1.8rem;font-size:0.95rem}
+.cta-email{display:flex;gap:0.6rem;justify-content:center;flex-wrap:wrap;max-width:440px;margin:0 auto}
+.cta-email input{flex:1;min-width:180px;padding:0.8rem 1.1rem;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.08);color:var(--white);font-size:0.9rem;outline:none}
+.cta-email input::placeholder{color:rgba(255,255,255,0.4)}
+.cta-email input:focus{border-color:var(--gold)}
+footer{background:#060e1c;padding:2.5rem 1.5rem;display:flex;flex-wrap:wrap;gap:2rem;justify-content:space-between;align-items:flex-start}
+.footer-brand .logo{font-size:1.1rem}
+.footer-brand p{color:rgba(255,255,255,0.35);font-size:0.8rem;margin-top:0.5rem;max-width:200px;line-height:1.5}
+.footer-links h4{color:rgba(255,255,255,0.45);font-size:0.72rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.7rem}
+.footer-links ul{list-style:none;display:flex;flex-direction:column;gap:0.4rem}
+.footer-links a{color:rgba(255,255,255,0.4);font-size:0.82rem;text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--gold)}
+.footer-bottom{width:100%;border-top:1px solid rgba(255,255,255,0.08);padding-top:1.3rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.5rem}
+.footer-bottom p{color:rgba(255,255,255,0.22);font-size:0.75rem}
+.disclaimer{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:0.6rem 0.9rem;color:rgba(255,255,255,0.3);font-size:0.72rem;line-height:1.5;max-width:460px;margin-top:0.8rem}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">DocPlain <span>AI</span></div>
+  <ul class="nav-links">
+    <li><a href="#how-it-works">How it works</a></li>
+    <li><a href="#documents">Documents</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="#cta" class="nav-cta">Get Started Free</a>
+</nav>
+
+<header class="hero">
+  <div class="hero-badge">AI-Powered Legal Simplification for the US</div>
+  <h1>Legal Contracts &amp; Docs,<br/><em>Finally in Plain English</em></h1>
+  <p>Stop paying thousands in legal fees. Generate, review, and understand any US legal document in plain English — in minutes, not weeks.</p>
+  <div class="hero-btns">
+    <a href="#cta" class="btn-primary">Start for Free</a>
+    <a href="#how-it-works" class="btn-outline">See How It Works</a>
+  </div>
+  <div class="hero-stats">
+    <div><div class="stat-num">50,000+</div><div class="stat-label">Documents Generated</div></div>
+    <div><div class="stat-num">$2.4M+</div><div class="stat-label">Legal Fees Saved</div></div>
+    <div><div class="stat-num">98%</div><div class="stat-label">User Satisfaction</div></div>
+  </div>
+</header>
+
+<div class="trust">
+  <span class="trust-label">Trusted by US businesses</span>
+  <div class="trust-logos">
+    <span class="trust-logo">STARTUPS</span>
+    <span class="trust-logo">FREELANCERS</span>
+    <span class="trust-logo">SMALL BUSINESS</span>
+    <span class="trust-logo">NONPROFITS</span>
+    <span class="trust-logo">REAL ESTATE</span>
+  </div>
+</div>
+
+<section class="how-it-works" id="how-it-works">
+  <div style="max-width:900px;margin:0 auto;text-align:center">
+    <div class="section-label">Simple process</div>
+    <h2 class="section-title center">From need to document in 3 easy steps</h2>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><h3>Choose your document</h3><p>Pick from 50+ legal document templates designed for US law and your specific situation.</p></div>
+    <div class="step"><div class="step-num">2</div><h3>Answer simple questions</h3><p>Our AI guides you through plain-English questions — no legal knowledge required at all.</p></div>
+    <div class="step"><div class="step-num">3</div><h3>Download &amp; use</h3><p>Get your legally sound document instantly. Download as PDF or Word, ready to sign.</p></div>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div style="max-width:920px;margin:0 auto;text-align:center">
+    <div class="section-label">Why DocPlain AI</div>
+    <h2 class="section-title center">Everything you need, nothing you don't</h2>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card"><div class="feature-icon">⚡</div><h3>Instant Generation</h3><p>Create professional legal documents in under 5 minutes using AI — not days waiting for a lawyer.</p></div>
+    <div class="feature-card"><div class="feature-icon">🇺🇸</div><h3>US Law Compliant</h3><p>All documents follow current US federal and state laws. Select your state for automatic compliance.</p></div>
+    <div class="feature-card"><div class="feature-icon">🔍</div><h3>Contract Review AI</h3><p>Upload any contract and our AI highlights risky clauses and explains everything in plain English.</p></div>
+    <div class="feature-card"><div class="feature-icon">✏️</div><h3>Smart Editing</h3><p>Easily customize any template with our guided editor. No legal jargon — just clear, simple prompts.</p></div>
+    <div class="feature-card"><div class="feature-icon">🔒</div><h3>Bank-Level Security</h3><p>Your documents are encrypted and private. We never share or sell your legal information ever.</p></div>
+    <div class="feature-card"><div class="feature-icon">💬</div><h3>Ask Anything</h3><p>Have a question about a clause? Chat with our AI legal assistant 24/7 for plain-English answers.</p></div>
+  </div>
+</section>
+
+<section class="doc-types" id="documents">
+  <div style="max-width:860px;margin:0 auto">
+    <div class="section-label">Document library</div>
+    <h2 class="section-title" style="color:#fff">50+ document types for every US need</h2>
+    <p class="section-sub">From freelance contracts to real estate agreements — we cover all 50 states.</p>
+    <div class="doc-grid">
+      <span class="doc-tag">NDA / Confidentiality</span><span class="doc-tag">Freelance Contract</span>
+      <span class="doc-tag">LLC Operating Agreement</span><span class="doc-tag">Employment Agreement</span>
+      <span class="doc-tag">Service Agreement</span><span class="doc-tag">Lease Agreement</span>
+      <span class="doc-tag">Independent Contractor</span><span class="doc-tag">Bill of Sale</span>
+      <span class="doc-tag">Partnership Agreement</span><span class="doc-tag">Terms of Service</span>
+      <span class="doc-tag">Privacy Policy</span><span class="doc-tag">Promissory Note</span>
+      <span class="doc-tag">Demand Letter</span><span class="doc-tag">Cease &amp; Desist</span>
+      <span class="doc-tag">Power of Attorney</span><span class="doc-tag">Non-Compete Agreement</span>
+      <span class="doc-tag">Purchase Agreement</span><span class="doc-tag">Consulting Agreement</span>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div style="max-width:860px;margin:0 auto;text-align:center">
+    <div class="section-label">Pricing</div>
+    <h2 class="section-title center">Less than one hour of a lawyer's time</h2>
+    <p class="section-sub center" style="margin:0 auto">No hidden fees. Cancel anytime. Free plan forever.</p>
+  </div>
+  <div class="plans">
+    <div class="plan">
+      <div class="plan-name">Free</div>
+      <div class="plan-price">$0 <span>/month</span></div>
+      <div class="plan-desc">Perfect for trying DocPlain AI with basic needs.</div>
+      <ul class="plan-features"><li>3 documents per month</li><li>Basic templates</li><li>PDF download</li><li>AI Q&amp;A (5 queries/mo)</li></ul>
+      <button class="plan-btn plan-btn-outline">Get Started Free</button>
+    </div>
+    <div class="plan featured">
+      <div class="plan-badge">Most Popular</div>
+      <div class="plan-name">Pro</div>
+      <div class="plan-price">$19 <span>/month</span></div>
+      <div class="plan-desc">For freelancers and small businesses serious about legal protection.</div>
+      <ul class="plan-features"><li>Unlimited documents</li><li>All 50+ templates</li><li>PDF &amp; Word download</li><li>Contract review AI</li><li>Unlimited AI Q&amp;A</li><li>State-specific compliance</li></ul>
+      <button class="plan-btn plan-btn-gold">Start Pro — $19/mo</button>
+    </div>
+    <div class="plan">
+      <div class="plan-name">Business</div>
+      <div class="plan-price">$49 <span>/month</span></div>
+      <div class="plan-desc">For teams and growing businesses with higher document volume.</div>
+      <ul class="plan-features"><li>Everything in Pro</li><li>5 team seats</li><li>Custom templates</li><li>Priority support</li><li>API access</li></ul>
+      <button class="plan-btn plan-btn-outline">Start Business</button>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div style="max-width:680px;margin:0 auto;text-align:center">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title center">Common questions</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item open">
+      <div class="faq-q">Is DocPlain AI a substitute for a real lawyer? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">DocPlain AI helps you understand and generate common legal documents, but it is not a law firm and does not provide legal advice. For complex legal matters, we always recommend consulting a licensed US attorney.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Are the documents legally valid in all US states? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Our templates are designed to comply with US federal law and are customizable per state. We cover all 50 US states. Always verify documents for your specific jurisdiction before signing.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is my data private and secure? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Absolutely. All your documents are encrypted with 256-bit AES encryption. We never sell or share your legal data with any third parties. You own your documents 100%.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I upload a contract for AI review? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Yes! On Pro and Business plans, you can upload any PDF contract and our AI will analyze it, flag risky clauses, and summarize key terms in plain English.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I cancel my subscription anytime? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Yes, cancel anytime with no fees or penalties. Your access continues until the end of your billing period. No questions asked.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Which US states are supported? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">We support all 50 US states. Simply select your state when generating a document and our AI automatically adjusts for your state's specific laws.</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="cta">
+  <h2>Ready to simplify your legal docs?</h2>
+  <p>Join 50,000+ US businesses and freelancers who trust DocPlain AI.</p>
+  <div class="cta-email">
+    <input type="email" placeholder="Enter your email address" aria-label="Email address"/>
+    <button class="btn-primary" type="button">Get Started Free</button>
+  </div>
+  <p style="color:rgba(255,255,255,0.3);font-size:0.75rem;margin-top:0.9rem">No credit card required. Free plan available forever.</p>
+</section>
+
+<footer>
+  <div class="footer-brand">
+    <div class="logo">DocPlain <span>AI</span></div>
+    <p>AI-powered legal document platform built for the US market.</p>
+    <div class="disclaimer">Not a law firm. Not legal advice. For informational and document generation purposes only.</div>
+  </div>
+  <div class="footer-links">
+    <h4>Product</h4>
+    <ul><li><a href="#how-it-works">How it works</a></li><li><a href="#documents">Document library</a></li><li><a href="#pricing">Pricing</a></li></ul>
+  </div>
+  <div class="footer-links">
+    <h4>Legal</h4>
+    <ul><li><a href="#">Terms of Service</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Disclaimer</a></li></ul>
+  </div>
+  <div class="footer-links">
+    <h4>Support</h4>
+    <ul><li><a href="#">Help Center</a></li><li><a href="#">Contact Us</a></li><li><a href="#">Blog</a></li></ul>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 DocPlain AI. All rights reserved.</p>
+    <p>Made for the US market 🇺🇸</p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const item=q.parentElement;
+    const wasOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!wasOpen)item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
