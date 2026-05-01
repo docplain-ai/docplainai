@@ -193,7 +193,7 @@ async function generateDocument(){
   const t=setInterval(()=>{document.getElementById('loadingText').textContent=msgs[i++%msgs.length];},2000);
   const prompt=`You are a professional US legal document drafting assistant. Generate a complete professional ${selectedDoc} based on these details:\nDocument Type: ${selectedDoc}\nParty 1: ${party1}\nParty 2: ${party2}\nUS State: ${state}\nDate: ${docDate}\nPurpose: ${description}\n${payment?'Payment: '+payment:''}\nRequirements:\n- Write in plain English easy to understand\n- Follow ${state} state law and US federal law\n- Include all standard clauses for this document type\n- Include parties section, terms, payment terms, termination clause, dispute resolution, governing law, signature block\n- Format with numbered sections and clear headings\n- Make it complete and professional\nGenerate the complete document now:`;
   try{
-    const res=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-latest:generateContent?key=${GEMINI_KEY}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:[{parts:[{text:prompt}]}],generationConfig:{temperature:0.3,maxOutputTokens:4000}})});
+    const res=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_KEY}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:[{parts:[{text:prompt}]}],generationConfig:{temperature:0.3,maxOutputTokens:4000}})});
     clearInterval(t);
     const data=await res.json();
     if(data.error)throw new Error(data.error.message);
