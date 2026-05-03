@@ -213,5 +213,12 @@ function copyDoc(){navigator.clipboard.writeText(document.getElementById('result
 function printDoc(){const w=window.open('','_blank');w.document.write(`<html><head><title>${selectedDoc}</title><style>body{font-family:Arial,sans-serif;padding:40px;line-height:1.8;font-size:13px}pre{white-space:pre-wrap;font-family:Arial,sans-serif}</style></head><body><pre>${document.getElementById('resultBox').textContent}</pre></body></html>`);w.document.close();w.print();}
 function startOver(){document.querySelectorAll('.doc-btn').forEach(b=>b.classList.remove('selected'));document.getElementById('step2').style.display='none';document.getElementById('resultSection').classList.remove('show');document.getElementById('loadingSection').classList.remove('show');document.getElementById('generateBtn').disabled=false;['party1','party2','description','payment'].forEach(id=>document.getElementById(id).value='');document.getElementById('state').value='';document.getElementById('s1').classList.add('active');document.getElementById('s1').classList.remove('done');document.getElementById('s2').classList.remove('active','done');document.getElementById('s3').classList.remove('active','done');selectedDoc='';window.scrollTo({top:0,behavior:'smooth'});}
 </script>
+<!-- Floating Chat Button -->
+<div id="chatWidget" style="position:fixed;bottom:24px;right:24px;z-index:9999">
+  <a href="chat.html" style="display:flex;align-items:center;gap:10px;background:#c9a84c;color:#0a1628;padding:14px 20px;border-radius:50px;text-decoration:none;font-family:DM Sans,sans-serif;font-size:0.88rem;font-weight:500;box-shadow:0 4px 20px rgba(201,168,76,0.4);transition:all 0.2s">
+    <span style="font-size:1.2rem">⚖️</span>
+    <span>Ask AI Legal Assistant</span>
+  </a>
+</div>
 </body>
   </html>
