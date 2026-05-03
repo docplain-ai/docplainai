@@ -93,11 +93,11 @@ nav{background:var(--navy);padding:1rem 1.5rem;display:flex;justify-content:spac
 </div>
 <script>
 let isTyping=false;
-const systemPrompt=`You are a helpful AI legal assistant for DocPlain AI, a US legal document platform. Answer questions about US legal documents in plain simple English. Explain legal terms clearly. Help users understand what documents they need. Always remind users you are not a lawyer. Keep answers friendly and helpful. Focus on US law only. Never give specific legal advice about personal cases. If asked to generate a document tell them to use the Generate Document page.`;
+const systemPrompt=`You are a helpful AI legal assistant for DocPlain AI, a US legal document platform. Your job is to answer questions about US legal documents, contracts and agreements in plain simple English that anyone can understand. Explain legal terms clearly. Help users understand what documents they need for their situation. Always remind users you are not a lawyer and they should consult one for complex matters. Keep answers clear, friendly and helpful. Focus on US law only. Never give specific legal advice about personal cases. If asked to generate a document tell them to visit the Generate Document page.`;
 const chatMessages=document.getElementById('chatMessages');
 const chatInput=document.getElementById('chatInput');
 const sendBtn=document.getElementById('sendBtn');
-let conversationHistory=[];
+let history=[];
 function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,100)+'px';}
 function handleKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage();}}
 function sendSuggested(btn){chatInput.value=btn.textContent;sendMessage();}
@@ -132,29 +132,24 @@ async function sendMessage(){
   isTyping=true;
   sendBtn.disabled=true;
   addMessage(text,'user');
-  conversationHistory.push({role:'user',parts:[{text}]});
+  history.push('User: '+text);
   showTyping();
   try{
-    const messages=[{role:'user',parts:[{text:systemPrompt+'\n\nUser question: '+text}]}];
-    if(conversationHistory.length>2){
-      messages[0].parts[0].text=systemPrompt;
-      conversationHistory.slice(-6).forEach(m=>messages.push(m));
-    }
-    const res=await fetch('/api/chat',{
+    const fullPrompt=systemPrompt+'\n\nConversation so far:\n'+history.slice(-6).join('\n')+'\n\nPlease answer the last user question helpfully:';
+    const res=await fetch('/api/generate',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({messages})
+      body:JSON.stringify({prompt:fullPrompt})
     });
     const data=await res.json();
     if(data.error)throw new Error(data.error);
-    const reply=data.text;
-    if(!reply)throw new Error('No response received');
+    if(!data.text)throw new Error('No response');
     hideTyping();
-    conversationHistory.push({role:'model',parts:[{text:reply}]});
-    addMessage(reply,'ai');
+    history.push('Assistant: '+data.text);
+    addMessage(data.text,'ai');
   }catch(err){
     hideTyping();
-    addMessage('Sorry I had trouble answering that. Please try again or visit our contact page for help.','ai');
+    addMessage('Sorry I had trouble answering that. Please try again!','ai');
   }
   isTyping=false;
   sendBtn.disabled=false;
