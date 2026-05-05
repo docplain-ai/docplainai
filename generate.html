@@ -161,7 +161,11 @@ nav{background:var(--navy);padding:1rem 1.5rem;display:flex;justify-content:spac
     </div>
   </div>
 </div>
-<script>
+<script type="module">
+import{createClient}from'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+const supabase=createClient('https://hlzhkyclcrhlejtomahh.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsemhreWNsY3JobGVqdG9tYWhoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5NDM0ODksImV4cCI6MjA5MzUxOTQ4OX0.OZcxlNH8I20VKSJwDGhdZJtgLC9mWgtW9iBPkwJPgzg');
+const{data:{session}}=await supabase.auth.getSession();
+if(!session){window.location.href='signin.html';}
 let selectedDoc='';
 const msgs=['Analyzing your requirements...','Applying US legal standards...','Drafting your document...','Adding legal clauses...','Finalizing in plain English...'];
 function selectDoc(btn,docType){document.querySelectorAll('.doc-btn').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');selectedDoc=docType;setTimeout(()=>{document.getElementById('step2').style.display='block';document.getElementById('formTitle').textContent='Details for: '+docType;document.getElementById('step2').scrollIntoView({behavior:'smooth'});document.getElementById('s1').classList.remove('active');document.getElementById('s1').classList.add('done');document.getElementById('s2').classList.add('active');document.getElementById('docDate').value=new Date().toISOString().split('T')[0];},200);}
