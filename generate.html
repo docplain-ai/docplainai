@@ -235,5 +235,16 @@ window.copyDoc=function(){navigator.clipboard.writeText(document.getElementById(
 window.printDoc=function(){const w=window.open('','_blank');w.document.write(`<html><head><title>${selectedDoc}</title><style>body{font-family:Arial,sans-serif;padding:40px;line-height:1.8;font-size:13px}pre{white-space:pre-wrap;font-family:Arial,sans-serif}</style></head><body><pre>${document.getElementById('resultBox').textContent}</pre></body></html>`);w.document.close();w.print();}
 window.startOver=function(){document.querySelectorAll('.doc-btn').forEach(b=>b.classList.remove('selected'));document.getElementById('step2').style.display='none';document.getElementById('resultSection').classList.remove('show');document.getElementById('loadingSection').classList.remove('show');document.getElementById('generateBtn').disabled=false;['party1','party2','description','payment'].forEach(id=>document.getElementById(id).value='');document.getElementById('state').value='';document.getElementById('s1').classList.add('active');document.getElementById('s1').classList.remove('done');document.getElementById('s2').classList.remove('active','done');document.getElementById('s3').classList.remove('active','done');selectedDoc='';window.scrollTo({top:0,behavior:'smooth'});}
 </script>
+<script>
+async function protectPage() {
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) {
+    window.location.href = "/signin.html";
+  }
+}
+
+protectPage();
+</script>
 </body>
 </html>
