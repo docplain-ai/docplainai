@@ -365,6 +365,56 @@ document.querySelectorAll('.faq-q').forEach(q=>{
   });
 });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const supabase = window.supabase.createClient(
+  "YOUR_SUPABASE_URL",
+  "YOUR_SUPABASE_ANON_KEY"
+);
+
+function showProfile(user) {
+  const profileDiv = document.getElementById("profile");
+
+  const avatar =
+    user.user_metadata?.avatar_url ||
+    "https://ui-avatars.com/api/?name=" + (user.email || "User");
+
+  profileDiv.innerHTML = `
+    <img src="${avatar}" 
+         style="width:35px;height:35px;border-radius:50%;">
+    <button onclick="logout()">Logout</button>
+  `;
+}
+
+async function checkUser() {
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (user) {
+    showProfile(user);
+  } else {
+    document.getElementById("profile").innerHTML =
+      '<button onclick="goLogin()">Login</button>';
+  }
+}
+
+supabase.auth.onAuthStateChange((event, session) => {
+  if (session?.user) {
+    showProfile(session.user);
+  }
+});
+
+async function logout() {
+  await supabase.auth.signOut();
+  window.location.href = "/signin.html";
+}
+
+function goLogin() {
+  window.location.href = "/signin.html";
+}
+
+checkUser();
+</script>
 </body>
 </html>
 
