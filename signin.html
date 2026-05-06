@@ -29,7 +29,8 @@ nav{background:var(--navy);padding:1rem 1.5rem;display:flex;justify-content:spac
 .password-wrap{position:relative}
 .password-wrap input{padding-right:2.5rem}
 .toggle-pass{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted);font-size:0.9rem}
-.forgot{display:block;text-align:right;font-size:0.78rem;color:var(--gold);text-decoration:none;margin-top:4px;cursor:pointer}
+.forgot{display:block;text-align:right;font-size:0.78rem;color:var(--gold);margin-top:4px;cursor:pointer;text-decoration:none}
+.forgot:hover{text-decoration:underline}
 .submit-btn{width:100%;background:var(--gold);color:var(--navy);border:none;padding:0.9rem;border-radius:10px;font-size:0.95rem;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:0.5rem;transition:all 0.2s}
 .submit-btn:hover{background:var(--gold-light)}
 .submit-btn:disabled{opacity:0.6;cursor:not-allowed}
@@ -78,6 +79,8 @@ nav{background:var(--navy);padding:1rem 1.5rem;display:flex;justify-content:spac
 <script type="module">
 import{createClient}from'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 const supabase=createClient('https://hlzhkyclcrhlejtomahh.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsemhreWNsY3JobGVqdG9tYWhoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5NDM0ODksImV4cCI6MjA5MzUxOTQ4OX0.OZcxlNH8I20VKSJwDGhdZJtgLC9mWgtW9iBPkwJPgzg');
+const{data:{session}}=await supabase.auth.getSession();
+if(session)window.location.href='dashboard.html';
 window.togglePass=function(){const i=document.getElementById('password');i.type=i.type==='password'?'text':'password';}
 window.signIn=async function(){
   const email=document.getElementById('email').value.trim();
@@ -91,13 +94,13 @@ window.signIn=async function(){
   try{
     const{data,error}=await supabase.auth.signInWithPassword({email,password});
     if(error)throw error;
-    showSuccess('✅ Signed in successfully! Redirecting you now...');
-    setTimeout(()=>window.location.href='generate.html',1500);
+    showSuccess('✅ Signed in! Redirecting to your dashboard...');
+    setTimeout(()=>window.location.href='dashboard.html',1200);
   }catch(err){
     btn.disabled=false;
     btn.innerHTML='Sign In to My Account';
     if(err.message.includes('Invalid login')){showError('Wrong email or password. Please try again.');}
-    else if(err.message.includes('Email not confirmed')){showError('Please verify your email first. Check your inbox!');}
+    else if(err.message.includes('Email not confirmed')){showError('Please verify your email first. Check your inbox for the verification link!');}
     else{showError(err.message||'Something went wrong. Please try again.');}
   }
 }
