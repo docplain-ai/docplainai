@@ -23,7 +23,7 @@ nav{background:var(--navy);padding:1rem 1.5rem;display:flex;justify-content:spac
 .card-title{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--text);margin-bottom:0.4rem}
 .card-sub{font-size:0.88rem;color:var(--muted)}
 .benefits{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.15);border-radius:10px;padding:1rem;margin-bottom:1.5rem}
-.benefit{display:flex;align-items:center;gap:8px;font-size:0.82rem;color:var(--muted);margin-bottom:5px}
+.benefit{font-size:0.82rem;color:var(--muted);margin-bottom:5px;display:flex;align-items:center;gap:8px}
 .benefit:last-child{margin-bottom:0}
 .form-group{margin-bottom:1rem}
 .form-group label{display:block;font-size:0.82rem;font-weight:500;margin-bottom:0.35rem}
@@ -107,6 +107,8 @@ nav{background:var(--navy);padding:1rem 1.5rem;display:flex;justify-content:spac
 <script type="module">
 import{createClient}from'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 const supabase=createClient('https://hlzhkyclcrhlejtomahh.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsemhreWNsY3JobGVqdG9tYWhoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5NDM0ODksImV4cCI6MjA5MzUxOTQ4OX0.OZcxlNH8I20VKSJwDGhdZJtgLC9mWgtW9iBPkwJPgzg');
+const{data:{session}}=await supabase.auth.getSession();
+if(session)window.location.href='dashboard.html';
 window.togglePass=function(id){const i=document.getElementById(id);i.type=i.type==='password'?'text':'password';}
 window.signUp=async function(){
   const firstName=document.getElementById('firstName').value.trim();
@@ -129,7 +131,7 @@ window.signUp=async function(){
       options:{data:{first_name:firstName,last_name:lastName,full_name:firstName+' '+lastName}}
     });
     if(error)throw error;
-    showSuccess('🎉 Account created successfully! Please check your email and click the verification link. Then come back and sign in!');
+    showSuccess('🎉 Account created! Please check your email and click the verification link. Then come back and sign in!');
     btn.innerHTML='Account Created ✅';
   }catch(err){
     btn.disabled=false;
