@@ -45,6 +45,9 @@ nav{background:var(--navy);padding:1rem 1.5rem;display:flex;justify-content:spac
 .btn-gold:hover{background:var(--gold-light)}
 .btn-navy{background:var(--navy);color:var(--white);border:none}
 .btn-navy:hover{background:#162340}
+.guarantee{background:var(--navy);border-radius:14px;padding:2rem;text-align:center;margin-bottom:3rem;color:var(--white)}
+.guarantee h3{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--gold);margin-bottom:0.5rem}
+.guarantee p{color:rgba(255,255,255,0.6);font-size:0.88rem;line-height:1.6}
 .faq-section{max-width:680px;margin:0 auto}
 .faq-title{font-family:'Playfair Display',serif;font-size:1.8rem;text-align:center;margin-bottom:2rem}
 .faq-item{background:var(--white);border:1px solid var(--border);border-radius:10px;margin-bottom:0.8rem;overflow:hidden}
@@ -54,9 +57,6 @@ nav{background:var(--navy);padding:1rem 1.5rem;display:flex;justify-content:spac
 .faq-item.open .faq-a{display:block}
 .faq-arrow{color:var(--gold);transition:transform 0.2s}
 .faq-item.open .faq-arrow{transform:rotate(45deg)}
-.guarantee{background:var(--navy);border-radius:14px;padding:2rem;text-align:center;margin-bottom:3rem;color:var(--white)}
-.guarantee h3{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--gold);margin-bottom:0.5rem}
-.guarantee p{color:rgba(255,255,255,0.6);font-size:0.88rem;line-height:1.6}
 </style>
 </head>
 <body>
@@ -65,6 +65,7 @@ nav{background:var(--navy);padding:1rem 1.5rem;display:flex;justify-content:spac
   <div class="nav-links">
     <a href="index.html" class="nav-link">Home</a>
     <a href="generate.html" class="nav-link">Generate</a>
+    <a href="dashboard.html" class="nav-link">Dashboard</a>
     <a href="signin.html" class="nav-link">Sign In</a>
     <a href="signup.html" class="nav-cta">Get Started Free</a>
   </div>
@@ -77,13 +78,14 @@ nav{background:var(--navy);padding:1rem 1.5rem;display:flex;justify-content:spac
   <div class="plans">
     <div class="plan">
       <div class="plan-name">Free</div>
-      <div class="plan-price">$0 <span>/month</span></div>
-      <div class="plan-desc">Perfect for trying DocPlain AI. No credit card needed.</div>
+      <div class="plan-price">$0<span>/month</span></div>
+      <div class="plan-desc">Perfect for trying DocPlain AI. No credit card needed ever.</div>
       <ul class="plan-features">
         <li>3 documents per month</li>
-        <li>Basic templates only</li>
+        <li>Basic templates</li>
         <li>PDF download</li>
         <li>AI chat assistant</li>
+        <li>All 50 US states</li>
         <li class="no">Unlimited documents</li>
         <li class="no">Word document download</li>
         <li class="no">Priority support</li>
@@ -93,7 +95,7 @@ nav{background:var(--navy);padding:1rem 1.5rem;display:flex;justify-content:spac
     <div class="plan featured">
       <div class="plan-badge">Most Popular</div>
       <div class="plan-name">Pro</div>
-      <div class="plan-price">$19 <span>/month</span></div>
+      <div class="plan-price">$19<span>/month</span></div>
       <div class="plan-desc">For freelancers and small businesses serious about legal protection.</div>
       <ul class="plan-features">
         <li>Unlimited documents</li>
@@ -108,7 +110,7 @@ nav{background:var(--navy);padding:1rem 1.5rem;display:flex;justify-content:spac
     </div>
     <div class="plan">
       <div class="plan-name">Business</div>
-      <div class="plan-price">$49 <span>/month</span></div>
+      <div class="plan-price">$49<span>/month</span></div>
       <div class="plan-desc">For teams and growing businesses with higher document volume.</div>
       <ul class="plan-features">
         <li>Everything in Pro</li>
@@ -117,32 +119,35 @@ nav{background:var(--navy);padding:1rem 1.5rem;display:flex;justify-content:spac
         <li>Priority phone support</li>
         <li>API access</li>
         <li>Dedicated account manager</li>
-        <li class="no">White label option</li>
       </ul>
       <a href="contact.html" class="plan-btn btn-navy">Contact Us to Upgrade</a>
     </div>
   </div>
   <div class="guarantee">
     <h3>🛡️ 7 Day Money Back Guarantee</h3>
-    <p>Not happy with DocPlain AI? Contact us within 7 days of your first payment and we will refund you 100%. No questions asked. Your satisfaction is our priority.</p>
+    <p>Not happy with DocPlain AI? Contact us within 7 days of your first payment and we will refund you 100%. No questions asked.</p>
   </div>
   <div class="faq-section">
     <div class="faq-title">Pricing Questions</div>
     <div class="faq-item open">
       <div class="faq-q">Is the free plan really free forever? <span class="faq-arrow">+</span></div>
-      <div class="faq-a">Yes! The free plan is free forever with 3 documents per month. No credit card required to sign up. Upgrade only when you need more documents.</div>
+      <div class="faq-a">Yes! The free plan is free forever with 3 documents per month. No credit card required. Upgrade only when you need more.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">Can I cancel my subscription anytime? <span class="faq-arrow">+</span></div>
-      <div class="faq-a">Yes absolutely. Cancel anytime with no penalties. Your access continues until the end of your billing period. No questions asked.</div>
+      <div class="faq-a">Yes absolutely. Cancel anytime with no penalties. Your access continues until the end of your billing period.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">How do I upgrade to Pro or Business? <span class="faq-arrow">+</span></div>
-      <div class="faq-a">Simply contact us through our contact page and we will set up your Pro or Business account within 24 hours. We will send you a payment link via email.</div>
+      <div class="faq-a">Simply contact us through our contact page and we will set up your Pro or Business account within 24 hours via email.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">Are the documents legally valid in all US states? <span class="faq-arrow">+</span></div>
-      <div class="faq-a">Our templates are designed for all 50 US states. However always review documents before signing and consult a licensed attorney for complex matters.</div>
+      <div class="faq-q">Are documents legally valid in all US states? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Our templates are designed for all 50 US states. Always review before signing and consult a licensed attorney for complex matters.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is my data safe and private? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Yes. All data is encrypted with 256-bit AES encryption. We never sell or share your information with anyone ever.</div>
     </div>
   </div>
 </div>
