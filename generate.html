@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Generate Legal Document — DocPlain AI</title>
+<meta name="description" content="Generate any US legal document instantly using AI. Free NDA, contracts, agreements in plain English."/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>"/>
+<meta name="theme-color" content="#0a1628"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#0a1628;--gold:#c9a84c;--gold-light:#f0d080;--cream:#faf8f3;--text:#1a1a2e;--muted:#6b7280;--white:#fff;--border:#e5e0d5;--green:#1a7a4a;--red:#c0392b}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);min-height:100vh}
+nav{background:var(--navy);padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
+.logo{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.3rem;font-weight:700;text-decoration:none}
+.logo span{color:var(--white)}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.nav-link{color:rgba(255,255,255,0.7);font-size:0.88rem;text-decoration:none}
+.nav-link:hover{color:var(--gold)}
+.profile-btn{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:25px;padding:0.4rem 0.9rem;cursor:pointer;transition:all 0.2s;position:relative;text-decoration:none}
+.profile-btn:hover{background:rgba(255,255,255,0.15)}
+.profile-avatar{width:28px;height:28px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:500;color:var(--navy)}
+.profile-name{color:var(--white);font-size:0.82rem}
+.profile-dropdown{position:absolute;top:calc(100% + 8px);right:0;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:0.5rem;min-width:180px;box-shadow:0 4px 20px rgba(0,0,0,0.1);display:none;z-index:200}
+.profile-btn:hover .profile-dropdown{display:block}
+.dropdown-item{display:flex;align-items:center;gap:8px;padding:0.6rem 0.8rem;border-radius:8px;font-size:0.85rem;color:var(--text);text-decoration:none;cursor:pointer;transition:background 0.15s;border:none;background:none;width:100%;text-align:left;font-family:'DM Sans',sans-serif}
+.dropdown-item:hover{background:var(--cream)}
+.dropdown-item.red{color:var(--red)}
+.dropdown-divider{height:1px;background:var(--border);margin:0.3rem 0}
+.hero{background:var(--navy);padding:2.5rem 1.5rem;text-align:center}
+.hero h1{font-family:'Playfair Display',serif;color:var(--white);font-size:clamp(1.5rem,4vw,2.2rem);margin-bottom:0.6rem}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero p{color:rgba(255,255,255,0.6);font-size:0.9rem;max-width:500px;margin:0 auto}
+.main{max-width:800px;margin:0 auto;padding:2rem 1.5rem}
+.card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1.5rem}
+.card-title{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:1.2rem;color:var(--text)}
+.doc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:0.7rem}
+.doc-btn{background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:0.8rem 0.6rem;text-align:center;cursor:pointer;transition:all 0.2s;font-size:0.82rem;color:var(--text)}
+.doc-btn:hover{border-color:var(--gold)}
+.doc-btn.selected{border-color:var(--gold);background:rgba(201,168,76,0.1);font-weight:500}
+.doc-icon{font-size:1.3rem;margin-bottom:0.4rem}
+.form-group{margin-bottom:1.2rem}
+.form-group label{display:block;font-size:0.85rem;font-weight:500;margin-bottom:0.4rem}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:0.75rem 1rem;border:1px solid var(--border);border-radius:8px;font-size:0.9rem;font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);outline:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold)}
+.form-group textarea{min-height:100px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:500px){.form-row{grid-template-columns:1fr}}
+.generate-btn{width:100%;background:var(--gold);color:var(--navy);border:none;padding:1rem;border-radius:10px;font-size:1rem;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:0.5rem;transition:all 0.2s}
+.generate-btn:hover{background:var(--gold-light)}
+.generate-btn:disabled{opacity:0.6;cursor:not-allowed}
+.result-section{display:none}
+.result-section.show{display:block}
+.result-box{background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:1.5rem;white-space:pre-wrap;font-size:0.88rem;line-height:1.8;max-height:500px;overflow-y:auto}
+.result-actions{display:flex;gap:0.8rem;margin-top:1rem;flex-wrap:wrap}
+.action-btn{flex:1;min-width:120px;padding:0.75rem;border-radius:8px;font-size:0.88rem;font-weight:500;cursor:pointer;border:1px solid var(--border);background:var(--white);color:var(--text);font-family:'DM Sans',sans-serif;transition:all 0.2s}
+.action-btn:hover{border-color:var(--gold);color:var(--gold)}
+.action-btn.primary{background:var(--navy);color:var(--white);border-color:var(--navy)}
+.loading{display:none;text-align:center;padding:2rem}
+.loading.show{display:block}
+.spinner{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 1rem}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading p{color:var(--muted);font-size:0.9rem}
+.error-box{background:#fff5f5;border:1px solid #fecaca;border-radius:10px;padding:1rem;color:var(--red);font-size:0.88rem;margin-top:1rem;display:none}
+.error-box.show{display:block}
+.step-pill{padding:0.3rem 0.8rem;border-radius:20px;font-size:0.78rem;border:1px solid var(--border);color:var(--muted);background:var(--white);display:inline-block;margin:0 4px 8px 0}
+.step-pill.active{background:var(--navy);color:var(--gold);border-color:var(--navy)}
+.step-pill.done{background:var(--green);color:var(--white);border-color:var(--green)}
+.disclaimer{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:8px;padding:0.8rem 1rem;font-size:0.78rem;color:var(--muted);margin-top:1rem;line-height:1.6}
+.checking{display:flex;align-items:center;justify-content:center;min-height:100vh;font-size:0.9rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="checking" id="checkingDiv">Checking your account...</div>
+<div id="mainContent" style="display:none">
+<nav>
+  <a href="dashboard.html" class="logo">DocPlain <span>AI</span></a>
+  <div class="nav-right">
+    <a href="dashboard.html" class="nav-link">Dashboard</a>
+    <a href="chat.html" class="nav-link">AI Chat</a>
+    <div class="profile-btn">
+      <div class="profile-avatar" id="profileAvatar">?</div>
+      <span class="profile-name" id="profileName">Account</span>
+      <div class="profile-dropdown">
+        <a href="dashboard.html" class="dropdown-item">📊 Dashboard</a>
+        <a href="pricing.html" class="dropdown-item">💎 Upgrade Plan</a>
+        <a href="contact.html" class="dropdown-item">📩 Support</a>
+        <div class="dropdown-divider"></div>
+        <button class="dropdown-item red" onclick="signOut()">🚪 Sign Out</button>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="hero">
+  <h1>Generate Your <em>Legal Document</em></h1>
+  <p>Answer a few simple questions and get a professional US legal document instantly.</p>
+</div>
+<div class="main">
+  <div style="margin-bottom:1.5rem">
+    <span class="step-pill active" id="s1">1. Choose document</span>
+    <span class="step-pill" id="s2">2. Fill details</span>
+    <span class="step-pill" id="s3">3. Get document</span>
+  </div>
+  <div class="card" id="step1">
+    <div class="card-title">What document do you need?</div>
+    <div class="doc-grid">
+      <div class="doc-btn" onclick="selectDoc(this,'NDA / Non-Disclosure Agreement')"><div class="doc-icon">🤝</div>NDA Agreement</div>
+      <div class="doc-btn" onclick="selectDoc(this,'Freelance Service Contract')"><div class="doc-icon">💼</div>Freelance Contract</div>
+      <div class="doc-btn" onclick="selectDoc(this,'LLC Operating Agreement')"><div class="doc-icon">🏢</div>LLC Agreement</div>
+      <div class="doc-btn" onclick="selectDoc(this,'Employment Agreement')"><div class="doc-icon">👔</div>Employment Agreement</div>
+      <div class="doc-btn" onclick="selectDoc(this,'Independent Contractor Agreement')"><div class="doc-icon">🔧</div>Contractor Agreement</div>
+      <div class="doc-btn" onclick="selectDoc(this,'Lease Agreement')"><div class="doc-icon">🏠</div>Lease Agreement</div>
+      <div class="doc-btn" onclick="selectDoc(this,'Service Agreement')"><div class="doc-icon">📋</div>Service Agreement</div>
+      <div class="doc-btn" onclick="selectDoc(this,'Bill of Sale')"><div class="doc-icon">🛒</div>Bill of Sale</div>
+      <div class="doc-btn" onclick="selectDoc(this,'Partnership Agreement')"><div class="doc-icon">🤜</div>Partnership Agreement</div>
+      <div class="doc-btn" onclick="selectDoc(this,'Terms of Service')"><div class="doc-icon">📄</div>Terms of Service</div>
+      <div class="doc-btn" onclick="selectDoc(this,'Privacy Policy')"><div class="doc-icon">🔒</div>Privacy Policy</div>
+      <div class="doc-btn" onclick="selectDoc(this,'Non-Compete Agreement')"><div class="doc-icon">🚫</div>Non-Compete</div>
+      <div class="doc-btn" onclick="selectDoc(this,'Consulting Agreement')"><div class="doc-icon">💡</div>Consulting Agreement</div>
+      <div class="doc-btn" onclick="selectDoc(this,'Promissory Note')"><div class="doc-icon">💰</div>Promissory Note</div>
+      <div class="doc-btn" onclick="selectDoc(this,'Cease and Desist Letter')"><div class="doc-icon">✋</div>Cease and Desist</div>
+      <div class="doc-btn" onclick="selectDoc(this,'Power of Attorney')"><div class="doc-icon">⚖️</div>Power of Attorney</div>
+    </div>
+  </div>
+  <div class="card" id="step2" style="display:none">
+    <div class="card-title" id="formTitle">Fill in your details</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Your Full Name or Business Name</label>
+        <input type="text" id="party1" placeholder="e.g. John Smith or Smith LLC"/>
+      </div>
+      <div class="form-group">
+        <label>Other Party Name</label>
+        <input type="text" id="party2" placeholder="e.g. Jane Doe or Acme Corp"/>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Your US State</label>
+        <select id="state">
+          <option value="">Select your state</option>
+          <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option>
+          <option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option>
+          <option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option>
+          <option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option>
+          <option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option>
+          <option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option>
+          <option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option>
+          <option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option>
+          <option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option>
+          <option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option>
+          <option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option>
+          <option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option>
+          <option>Wisconsin</option><option>Wyoming</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Effective Date</label>
+        <input type="date" id="docDate"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Describe what this document is for</label>
+      <textarea id="description" placeholder="e.g. I am a freelance web designer. I want to protect my payment and work ownership."></textarea>
+    </div>
+    <div class="form-group">
+      <label>Payment Amount (if applicable)</label>
+      <input type="text" id="payment" placeholder="e.g. $3,000 total or $500/month"/>
+    </div>
+    <div class="disclaimer">⚠️ DocPlain AI generates legal document templates for informational purposes only. This is not legal advice.</div>
+    <button class="generate-btn" id="generateBtn" onclick="generateDocument()">✨ Generate My Legal Document — Free</button>
+    <div class="error-box" id="errorBox"></div>
+  </div>
+  <div class="loading" id="loadingSection">
+    <div class="spinner"></div>
+    <p id="loadingText">Generating your legal document...</p>
+  </div>
+  <div class="result-section" id="resultSection">
+    <div class="card">
+      <div class="card-title">✅ Your Legal Document is Ready!</div>
+      <div class="result-box" id="resultBox"></div>
+      <div class="result-actions">
+        <button class="action-btn primary" onclick="copyDoc()">📋 Copy Document</button>
+        <button class="action-btn" onclick="printDoc()">🖨️ Print / Save PDF</button>
+        <button class="action-btn" onclick="startOver()">🔄 Generate Another</button>
+        <a href="dashboard.html" class="action-btn" style="text-align:center;text-decoration:none">📊 Dashboard</a>
+      </div>
+      <div class="disclaimer">✅ Review carefully before signing. Always consult a licensed US attorney for important matters.</div>
+    </div>
+  </div>
+</div>
+</div>
+<script type="module">
+import{createClient}from'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+const supabase=createClient('https://hlzhkyclcrhlejtomahh.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsemhreWNsY3JobGVqdG9tYWhoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5NDM0ODksImV4cCI6MjA5MzUxOTQ4OX0.OZcxlNH8I20VKSJwDGhdZJtgLC9mWgtW9iBPkwJPgzg');
+const{data:{session}}=await supabase.auth.getSession();
+if(!session){window.location.href='signin.html';}
+else{
+  document.getElementById('checkingDiv').style.display='none';
+  document.getElementById('mainContent').style.display='block';
+  const user=session.user;
+  const meta=user.user_metadata||{};
+  const firstName=meta.first_name||meta.full_name?.split(' ')[0]||user.email.split('@')[0];
+  document.getElementById('profileAvatar').textContent=firstName.charAt(0).toUpperCase();
+  document.getElementById('profileName').textContent=firstName;
+}
+window.signOut=async function(){await supabase.auth.signOut();window.location.href='index.html';}
+let selectedDoc='';
+const msgs=['Analyzing your requirements...','Applying US legal standards...','Drafting your document...','Adding legal clauses...','Finalizing in plain English...'];
+window.selectDoc=function(btn,docType){document.querySelectorAll('.doc-btn').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');selectedDoc=docType;setTimeout(()=>{document.getElementById('step2').style.display='block';document.getElementById('formTitle').textContent='Details for: '+docType;document.getElementById('step2').scrollIntoView({behavior:'smooth'});document.getElementById('s1').classList.remove('active');document.getElementById('s1').classList.add('done');document.getElementById('s2').classList.add('active');document.getElementById('docDate').value=new Date().toISOString().split('T')[0];},200);}
+window.generateDocument=async function(){
+  const party1=document.getElementById('party1').value.trim();
+  const party2=document.getElementById('party2').value.trim();
+  const state=document.getElementById('state').value;
+  const description=document.getElementById('description').value.trim();
+  const payment=document.getElementById('payment').value.trim();
+  const docDate=document.getElementById('docDate').value;
+  if(!selectedDoc){showError('Please select a document type first.');return;}
+  if(!party1){showError('Please enter your name or business name.');return;}
+  if(!party2){showError('Please enter the other party name.');return;}
+  if(!state){showError('Please select your US state.');return;}
+  if(!description){showError('Please describe what this document is for.');return;}
+  hideError();
+  document.getElementById('generateBtn').disabled=true;
+  document.getElementById('loadingSection').classList.add('show');
+  document.getElementById('resultSection').classList.remove('show');
+  document.getElementById('s2').classList.remove('active');
+  document.getElementById('s2').classList.add('done');
+  document.getElementById('s3').classList.add('active');
+  let i=0;
+  const t=setInterval(()=>{document.getElementById('loadingText').textContent=msgs[i++%msgs.length];},2000);
+  const prompt=`You are a professional US legal document drafting assistant. Generate a complete professional ${selectedDoc} based on these details:\nDocument Type: ${selectedDoc}\nParty 1: ${party1}\nParty 2: ${party2}\nUS State: ${state}\nDate: ${docDate}\nPurpose: ${description}\n${payment?'Payment: '+payment:''}\nRequirements:\n- Write in plain English\n- Follow ${state} state law and US federal law\n- Include all standard clauses\n- Include parties, terms, payment, termination, dispute resolution, governing law, signature block\n- Format with numbered sections and headings\nGenerate the complete document now:`;
+  try{
+    const res=await fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt})});
+    clearInterval(t);
+    const data=await res.json();
+    if(data.error)throw new Error(data.error);
+    if(!data.text)throw new Error('No document generated. Please try again.');
+    const user=(await supabase.auth.getSession()).data.session.user;
+    const used=parseInt(localStorage.getItem('docs_used_'+user.id)||'0')+1;
+    localStorage.setItem('docs_used_'+user.id,used.toString());
+    document.getElementById('loadingSection').classList.remove('show');
+    document.getElementById('resultSection').classList.add('show');
+    document.getElementById('resultBox').textContent=data.text;
+    document.getElementById('resultSection').scrollIntoView({behavior:'smooth'});
+  }catch(err){
+    clearInterval(t);
+    document.getElementById('loadingSection').classList.remove('show');
+    document.getElementById('generateBtn').disabled=false;
+    document.getElementById('s3').classList.remove('active');
+    document.getElementById('s2').classList.remove('done');
+    document.getElementById('s2').classList.add('active');
+    showError('Error: '+err.message);
+  }
+}
+function showError(msg){const b=document.getElementById('errorBox');b.textContent='⚠️ '+msg;b.classList.add('show');}
+function hideError(){document.getElementById('errorBox').classList.remove('show');}
+window.copyDoc=function(){navigator.clipboard.writeText(document.getElementById('resultBox').textContent).then(()=>{event.target.textContent='✅ Copied!';setTimeout(()=>event.target.textContent='📋 Copy Document',2000);});}
+window.printDoc=function(){const w=window.open('','_blank');w.document.write(`<html><head><title>${selectedDoc}</title><style>body{font-family:Arial,sans-serif;padding:40px;line-height:1.8;font-size:13px}pre{white-space:pre-wrap;font-family:Arial,sans-serif}</style></head><body><pre>${document.getElementById('resultBox').textContent}</pre></body></html>`);w.document.close();w.print();}
+window.startOver=function(){document.querySelectorAll('.doc-btn').forEach(b=>b.classList.remove('selected'));document.getElementById('step2').style.display='none';document.getElementById('resultSelection').classList.remove('show');document.getElementById('generateBtn').disabled=false;['party1','party2','description','payment'].forEach(id=>document.getElementById(id).value='');document.getElementById('state').value='';document.getElementById('s1').classList.add('active'); document.getElementById('s1').classList.remove('done');document.getElementById('s2').classList.remove('active','done'); document.getElementById('s3').classList.remove('active','done');selectedDoc='';window.scrollTo({top:0,behaviour:'smooth'});} 
+  </script>
+</body>
+</html>
