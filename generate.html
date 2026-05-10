@@ -221,6 +221,12 @@ window.generateDocument=async function(){
   if(!party2){showError('Please enter the other party name.');return;}
   if(!state){showError('Please select your US state.');return;}
   if(!description){showError('Please describe what this document is for.');return;}
+  const userId=session.user.id;
+  const docsUsed=parseInt(localStorage.getItem('docs_used_'+userId)||'0');
+if(docsUsed>=3){
+  document.getElementById('limitModal').style.display='flex';
+  return;
+}
   hideError();
   document.getElementById('generateBtn').disabled=true;
   document.getElementById('loadingSection').classList.add('show');
@@ -260,5 +266,20 @@ window.copyDoc=function(){navigator.clipboard.writeText(document.getElementById(
 window.printDoc=function(){const w=window.open('','_blank');w.document.write(`<html><head><title>${selectedDoc}</title><style>body{font-family:Arial,sans-serif;padding:40px;line-height:1.8;font-size:13px}pre{white-space:pre-wrap;font-family:Arial,sans-serif}</style></head><body><pre>${document.getElementById('resultBox').textContent}</pre></body></html>`);w.document.close();w.print();}
 window.startOver=function(){document.querySelectorAll('.doc-btn').forEach(b=>b.classList.remove('selected'));document.getElementById('step2').style.display='none';document.getElementById('resultSelection').classList.remove('show');document.getElementById('generateBtn').disabled=false;['party1','party2','description','payment'].forEach(id=>document.getElementById(id).value='');document.getElementById('state').value='';document.getElementById('s1').classList.add('active'); document.getElementById('s1').classList.remove('done');document.getElementById('s2').classList.remove('active','done'); document.getElementById('s3').classList.remove('active','done');selectedDoc='';window.scrollTo({top:0,behaviour:'smooth'});} 
   </script>
+<div id="limitModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(10,22,40,0.85);z-index:9999;align-items:center;justify-content:center;padding:1.5rem">
+  <div style="background:#fff;border-radius:16px;padding:2rem;max-width:420px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.3)">
+    <div style="font-size:2.5rem;margin-bottom:1rem">⚖️</div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:#0a1628;margin-bottom:0.6rem">Free Limit Reached!</h2>
+    <p style="color:#6b7280;font-size:0.88rem;line-height:1.6;margin-bottom:1.5rem">You have used all 3 free documents for this month. Upgrade to Pro for unlimited documents, all 16 document types and priority support!</p>
+    <div style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:10px;padding:1rem;margin-bottom:1.5rem">
+      <div style="font-size:0.82rem;color:#6b7280;margin-bottom:4px">Pro Plan</div>
+      <div style="font-family:'Playfair Display',serif;font-size:2rem;color:#0a1628;font-weight:700">$19<span style="font-size:1rem;font-weight:400;color:#6b7280">/month</span></div>
+      <div style="font-size:0.8rem;color:#6b7280;margin-top:4px">Unlimited documents · All 50 US states · Priority support</div>
+    </div>
+    <a href="contact.html" style="display:block;background:#c9a84c;color:#0a1628;padding:0.9rem;border-radius:10px;text-decoration:none;font-weight:500;font-size:0.95rem;margin-bottom:0.8rem">📩 Contact Us to Upgrade</a>
+    <a href="pricing.html" style="display:block;background:transparent;border:1px solid #e5e0d5;color:#1a1a2e;padding:0.9rem;border-radius:10px;text-decoration:none;font-size:0.88rem;margin-bottom:0.8rem">💎 View All Plans</a>
+    <button onclick="document.getElementById('limitModal').style.display='none'" style="background:none;border:none;color:#9ca3af;font-size:0.82rem;cursor:pointer;font-family:'DM Sans',sans-serif">Maybe later</button>
+  </div>
+</div>
 </body>
 </html>
